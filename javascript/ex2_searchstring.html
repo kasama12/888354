@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+      <script type="text/javascript">
+        function check(){
+          var input1 = document.getElementById('input1').value;
+          var input2 = document.getElementById('input2').value;
+          var radio = document.querySelector('input[name="check"]:checked').value;
+      if(radio=="yes"){
+        if(input2==""||input1==""){
+          document.getElementById('result').innerHTML = "No input";
+        }
+        else{
+          var re = new RegExp(input2, 'g');
+          var count = input1.match(re);
+          if(count==null){
+            document.getElementById('result').innerHTML = "0";
+          }
+          else{
+            document.getElementById('result').innerHTML = input1.match(re).length;;
+          }
+        }
+      }
+      else if(radio=="no"){
+        if(input2==""||input1==""){
+          document.getElementById('result').innerHTML = "No input";
+        }
+        else{
+          var re = new RegExp(input2, 'gi');
+          var count = input1.match(re);
+          if(count==null){
+            document.getElementById('result').innerHTML = "0";
+          }
+          else{
+            document.getElementById('result').innerHTML = input1.match(re).length;
+          }
+        }
+      }
+        }
+      </script>
+   </head>
+   <body>
+
+     <center>
+     <h1>
+       Ex2-Search String Non Sensitive Case
+     </h1>
+     <br />
+     Text Input : <textarea name="name" id="input1"rows="8" cols="80"></textarea>
+     <br /><br />
+     Sensitive Case :  <input type="radio" name="check" value="yes"checked> Yes
+                       <input type="radio" name="check" value="no" > No
+    <br /><br />Search : <input type="text" name="search" id="input2" value="">
+    <br /><br /><input type="submit" value="search" id="click" onclick="check()">
+    <br /><br /> Result for Search : <span id="result"> <span>
+     </center>
+
+   </body>
+ </html>
